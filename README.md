@@ -334,8 +334,8 @@ If you encounter any issues or have questions:
 
 ## Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
+**Onxy**
+- GitHub: [@Misiix9](https://github.com/Misiix9)
 
 ---
 
