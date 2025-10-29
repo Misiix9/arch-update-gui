@@ -1,0 +1,107 @@
+/* Minimalistic rounded theme for Update GUI */
+
+/* Base - Main window and dialogs */
+QMainWindow {
+  background-color: #1f2326;
+}
+
+QDialog {
+  background-color: #1f2326;
+  color: #e6eef3;
+}
+
+/* Buttons - rounded and styled */
+QPushButton {
+  background-color: #2b3340;
+  color: #e6eef3;
+  border: 1px solid #3a3a3a;
+  padding: 8px 12px;
+  border-radius: 10px;
+  min-height: 30px;
+}
+
+QPushButton:hover {
+  background-color: #394152;
+}
+
+QPushButton:pressed {
+  background-color: #23292f;
+}
+
+QPushButton:disabled {
+  background-color: #505560;
+  color: #8a8a8a;
+  border-color: #2a2a2a;
+}
+
+/* Labels */
+QLabel {
+  color: #cfe6f5;
+  background-color: transparent;
+}
+
+/* List widget - override inline styles with !important */
+QListWidget {
+  background-color: #15181a !important;
+  border: 1px solid #2a2a2a !important;
+  padding: 8px !important;
+  border-radius: 8px !important;
+  color: #e6eef3 !important;
+}
+
+QListWidget::item {
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+QListWidget::item:selected {
+  background-color: #3a5a7a;
+  color: #ffffff;
+}
+
+/* TextEdit / Log viewer - override inline styles */
+QTextEdit {
+  background-color: #0f1315 !important;
+  border: 1px solid #2a2a2a !important;
+  padding: 10px !important;
+  border-radius: 8px !important;
+  color: #e6eef3 !important;
+}
+
+/* Progress bar - override inline styles */
+QProgressBar {
+  background-color: #2a2a2a !important;
+  border: 1px solid #3a3a3a !important;
+  border-radius: 10px !important;
+  text-align: center !important;
+  color: #dcebf9 !important;
+  min-height: 18px !important;
+}
+
+QProgressBar::chunk {
+  background-color: #6a9ed4 !important;
+  border-radius: 10px !important;
+}
+
+/* Scrollbars - thin and subtle */
+QScrollBar:vertical {
+  background: #1a1a1a;
+  width: 10px;
+  margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+  background: #404040;
+  min-height: 20px;
+  border-radius: 5px;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+  height: 0px;
+}
+
+/* Stacked widget */
+QStackedWidget {
+  background-color: transparent;
+}

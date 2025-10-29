@@ -1,0 +1,21 @@
+/* Minimal safe QSS for testing */
+QMainWindow {
+  background-color: #1f2326;
+}
+
+QPushButton {
+  background-color: #2b3340;
+  color: #e6eef3;
+  border: 1px solid #3a3a3a;
+  padding: 8px 12px;
+  border-radius: 10px;
+  min-height: 30px;
+}
+
+QPushButton:hover {
+  background-color: #394152;
+}
+
+QLabel {
+  color: #cfe6f5;
+}
