@@ -317,7 +317,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 If you encounter any issues or have questions:
-- Open an issue on [GitHub Issues](https://github.com/yourusername/arch-update-gui/issues)
+- Open an issue on [GitHub Issues](https://github.com/misiix9/arch-update-gui/issues)
 - Check existing issues for solutions
 - Provide detailed information (error messages, system info, logs)
 
