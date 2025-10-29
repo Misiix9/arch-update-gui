@@ -1,137 +1,95 @@
 # Arch Update GUI
 
-A modern, user-friendly graphical interface for managing system updates on Arch Linux and Arch-based distributions.
+A beautiful, modern graphical user interface for managing Arch Linux system updates with support for both official repositories and AUR packages.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)
-![Platform](https://img.shields.io/badge/platform-Arch%20Linux-blue.svg)
+![Arch Update GUI](https://img.shields.io/badge/Python-3.9+-blue.svg)
+![PySide6](https://img.shields.io/badge/PySide6-6.0+-green.svg)
+![License](https://img.shields.io/badge/license-MIT-orange.svg)
 
 ## Features
 
-✨ **Smart Update Management**
-- Check for updates from official repositories and AUR
-- View detailed package information (current → new versions)
-- Desktop notifications for update status
-- Real-time update progress with per-package tracking
+### 🎨 Beautiful Modern Interface
+- **10 Premium Themes**: Dark Professional, Nord Aurora, Dracula, Monokai, Gruvbox, Tokyo Night, One Dark, Solarized Dark, Material Dark, and Cyberpunk
+- **Live Theme Preview**: See theme changes instantly before applying
+- **Smooth Animations**: Optional UI animations for a polished experience
+- **Responsive Design**: Adapts to different screen sizes with high DPI support
+- **Card-based Layout**: Clean, organized interface with gradient backgrounds
+- **Unicode Icons**: Cross-platform compatible symbols
 
-🎨 **Modern Interface**
-- Clean, professional dark theme
-- Customizable color scheme
-- Live logging with timestamps
-- Progress indicators for all operations
+### 📦 Update Management
+- **Dual Repository Support**: Manage both official Arch repositories and AUR packages
+- **Real-time Progress**: Live package-by-package update tracking with progress bars
+- **Smart Authentication**: Secure password handling via Zenity dialog with cached sessions
+- **Background Checks**: Automatic scheduled update checks (1-24 hour intervals)
+- **System Tray Integration**: Minimize to tray with quick access menu
+- **Desktop Notifications**: Optional notifications for update status
 
-🔒 **Secure & Reliable**
-- Graphical password prompt (Zenity)
-- Secure privilege elevation via sudo
-- Database lock detection and handling
-- Comprehensive error handling
+### 🔧 Advanced Features
+- **Package Search**: Quick search across all available packages with repository info
+- **Ignored Packages**: Exclude specific packages from updates permanently
+- **Update History**: Track all system updates with timestamps and status
+- **Rollback Support**: Easy terminal access to package cache for rollbacks
+- **Cache Management**: One-click package cache cleaning with paccache
+- **Custom Terminal**: Configure your preferred terminal emulator (foot, kitty, alacritty, etc.)
 
-📦 **Package Management**
-- Official repository updates (pacman)
-- AUR package updates (yay)
-- Package cache cleaning (paccache)
-- Detailed update logs
-
-## Screenshots
-
-*Coming soon*
-
-## Supported Operating Systems
-
-- ✅ Arch Linux
-- ✅ Manjaro
-- ✅ EndeavourOS
-- ✅ Garuda Linux
-- ✅ ArcoLinux
-- ✅ Any Arch-based distribution
-
-**Desktop Environments:** Works on all (KDE Plasma, GNOME, XFCE, i3, Hyprland, etc.)
+### 📊 Detailed Logging
+- **Comprehensive Logs**: Full update process logging with timestamps
+- **Pacman Log Parsing**: Automatic extraction of update details from `/var/log/pacman.log`
+- **Session History**: Track package installations and upgrades per session
+- **Dedicated Log View**: Separate page for viewing full monospace logs
+- **Error Tracking**: Detailed error messages and stderr capture
 
 ## Requirements
 
-### System Packages
-- Python 3.8 or higher
-- PySide6 (Qt6 for Python)
-- pacman (comes with Arch)
-- checkupdates (pacman-contrib)
-- yay (AUR helper)
-- zenity (graphical dialogs)
-- sudo
-- notify-send (libnotify) - optional, for notifications
+### System Requirements
+- **OS**: Arch Linux or Arch-based distribution
+- **Python**: 3.9 or higher
+- **Display Server**: X11 or Wayland
 
-### Python Packages
-- PySide6
+### Dependencies
+
+#### Python Packages
+```bash
+sudo pacman -S python-pyside6
+```
+
+#### System Utilities
+```bash
+# Required
+sudo pacman -S pacman-contrib zenity
+
+# Optional but recommended
+sudo pacman -S yay            # For AUR support
+sudo pacman -S libnotify      # For desktop notifications
+```
 
 ## Installation
 
-### Quick Install (Recommended)
-
-1. Clone the repository:
+### Quick Install
 ```bash
-git clone https://github.com/yourusername/arch-update-gui.git
-cd arch-update-gui
-```
+# Clone or download to your preferred location
+cd ~/Documents/scripts/Update
 
-2. Run the installer:
-```bash
-chmod +x install.sh
-./install.sh
-```
-
-The installer will:
-- Install all required dependencies
-- Set up the Python virtual environment
-- Create a desktop launcher
-- Configure the application
-
-### Manual Installation
-
-1. Install system dependencies:
-```bash
-sudo pacman -S python python-pip python-virtualenv pacman-contrib yay zenity libnotify
-```
-
-2. Clone the repository:
-```bash
-git clone https://github.com/yourusername/arch-update-gui.git
-cd arch-update-gui
-```
-
-3. Create and activate virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate
-```
-
-4. Install Python dependencies:
-```bash
-pip install PySide6
-```
-
-5. Make the script executable:
-```bash
+# Make executable
 chmod +x update_gui.py
+
+# Run
+python update_gui.py
 ```
 
-6. Run the application:
-```bash
-./update_gui.py
-```
-
-### Creating a Desktop Launcher
-
+### Desktop Entry (Optional)
 Create `~/.local/share/applications/arch-update-gui.desktop`:
-```desktop
+
+```ini
 [Desktop Entry]
-Version=1.0
-Type=Application
 Name=Arch Update GUI
-Comment=Graphical system update manager for Arch Linux
-Exec=/home/YOUR_USERNAME/arch-update-gui/venv/bin/python /home/YOUR_USERNAME/arch-update-gui/update_gui.py
+Comment=Graphical update manager for Arch Linux
+Exec=python /home/YOUR_USERNAME/Documents/scripts/Update/update_gui.py
 Icon=system-software-update
 Terminal=false
+Type=Application
 Categories=System;Settings;PackageManager;
-Keywords=update;upgrade;pacman;aur;yay;
+Keywords=update;package;pacman;aur;yay;
 ```
 
 Replace `YOUR_USERNAME` with your actual username.
@@ -139,148 +97,146 @@ Replace `YOUR_USERNAME` with your actual username.
 ## Usage
 
 ### First Run
+1. Launch the application
+2. Click **Settings** (⚙) to configure your preferences
+3. Select your preferred theme from 10 options
+4. Configure terminal emulator if using custom terminal
+5. Enable auto-check or scheduled checks if desired
+6. Click **Check for Updates** to authenticate and scan for updates
 
-1. Launch the application from your application menu or run:
-```bash
-./update_gui.py
-```
+### Checking for Updates
+1. Click **Check for Updates** button
+2. Enter your password in the Zenity dialog
+3. Wait for official repository scan
+4. Wait for AUR package scan
+5. Review available updates in the package list (📦 for official, 🎯 for AUR)
 
-2. Click **"Check for Updates"**
-   - A password dialog will appear (zenity)
-   - Enter your password to authenticate
-   - The app will check for updates from official repos and AUR
+### Running Updates
+1. After checking for updates, click **Run Updates**
+2. Official repository updates run automatically via pacman
+3. Monitor real-time progress for each package
+4. AUR updates open in your terminal for manual review
+5. View completion summary with package counts
 
-3. Review pending updates in the list
+### Managing Ignored Packages
+1. Go to **Tools** → **Manage Ignored Packages**
+2. Type package name in input field
+3. Click **Add** (+) button
+4. Select package from list and click **Remove** (-) to unignore
+5. Changes apply immediately to future update checks
 
-4. Click **"Run Updates"** to install updates
-   - Official packages are updated via pacman
-   - AUR packages are updated via yay (in terminal)
+### Viewing History
+1. Go to **Tools** → **Update History**
+2. Review past updates with dates, types, package counts, and status
+3. Click **Refresh** (↻) to reload the list
+4. Use **Clear History** (⌫) to reset (confirmation required)
+5. History stored in JSON format at `~/.config/MyOrg/update_history.json`
 
-### Main Features
+### Package Search
+1. Go to **Tools** → **Search Packages**
+2. Enter package name in search field
+3. Press Enter or click **Search** (⌕)
+4. View results in tree format with version and repository info
+5. Double-click package for detailed pacman information
 
-#### Check for Updates
-- Click the **"Check for Updates"** button
-- Enter your password when prompted
-- View the list of pending updates with version numbers
-
-#### Run Updates
-- Only enabled after checking for updates
-- Updates all official packages automatically
-- Opens terminal for AUR package updates (requires user interaction)
-- Shows real-time progress for each package
-
-#### Clean Cache
-- Click **"Clean Cache"** to remove old package versions
-- Keeps one old version of each package
-- Frees up disk space in `/var/cache/pacman/pkg/`
-
-#### View Logs
-- Click the document icon (top right) to view detailed logs
-- See what was installed, upgraded, and any errors
-- Logs persist between sessions
-
-#### Customize Colors
-- Click the settings icon (top right)
-- Choose custom colors for all UI elements
-- Click "Apply" to save your theme
+### Rollback Updates
+1. Go to **Tools** → **Rollback Last Update**
+2. Confirm the action
+3. Terminal opens with rollback command
+4. Follow on-screen instructions to select packages
 
 ## Configuration
 
-Settings are automatically saved to:
-```
-~/.config/MyOrg/ArchUpdateGUI.conf
-```
+### Settings Panel (3 Tabs)
 
-This includes:
-- Window size and position
-- Color preferences
+#### Appearance Tab
+- **Theme Selection**: Choose from 10 premium themes
+  - Dark Professional (Catppuccin-inspired)
+  - Nord Aurora
+  - Dracula
+  - Monokai
+  - Gruvbox
+  - Tokyo Night
+  - One Dark
+  - Solarized Dark
+  - Material Dark
+  - Cyberpunk
+- **Live Preview**: See theme colors before applying
+- **Typography**: Customize font family and size (8-24pt)
 
-## Terminal Configuration
+#### Updates Tab
+- **Auto-Check on Startup**: Check for updates when app launches
+- **Scheduled Checks**: Enable periodic background checks (1-24 hours)
+- **System Tray**: Minimize to tray instead of closing
+- **Notifications**: Toggle desktop notifications
+- **Confirmation**: Require confirmation before updating (optional)
 
-By default, the app uses `foot` terminal for AUR updates. To use a different terminal, edit `update_gui.py`:
+#### Advanced Tab
+- **Terminal Command**: Set custom terminal (foot, kitty, alacritty, etc.)
+- **Execute Flag**: Terminal execution flag (-e, --, etc.)
+- **UI Animations**: Enable/disable smooth animations
+- **High DPI Scaling**: Toggle high DPI support for 4K displays
 
-```python
-# Line ~23
-TERMINAL_CMD = "foot"  # Change to: "kitty", "alacritty", "gnome-terminal", etc.
-TERMINAL_EXEC_FLAG = "-e"  # For foot/alacritty. Use "" for kitty, or "--" for gnome-terminal
-```
+### Configuration Files
+Settings are stored in:
+- `~/.config/MyOrg/ArchUpdateGUI.conf` - Qt settings (QSettings)
+- `~/.config/MyOrg/update_history.json` - Update history log
+- `~/.config/MyOrg/ignored_packages.json` - Ignored packages list
 
-Common terminal configurations:
-```python
-# Kitty
-TERMINAL_CMD = "kitty"
-TERMINAL_EXEC_FLAG = ""
+## Keyboard Shortcuts
 
-# Alacritty
-TERMINAL_CMD = "alacritty"
-TERMINAL_EXEC_FLAG = "-e"
+- **Enter** in search field: Execute search
+- **Esc**: Close dialogs
+- **Alt+F4**: Quit application
 
-# GNOME Terminal
-TERMINAL_CMD = "gnome-terminal"
-TERMINAL_EXEC_FLAG = "--"
+## System Tray Features
 
-# Konsole (KDE)
-TERMINAL_CMD = "konsole"
-TERMINAL_EXEC_FLAG = "-e"
-```
+- **Click**: Toggle window visibility
+- **Menu Options**:
+  - Show Window
+  - Check for Updates
+  - Quit
 
 ## Troubleshooting
 
-### "Zenity not found" error
-Install zenity:
-```bash
-sudo pacman -S zenity
-```
+### Authentication Issues
+**Problem**: "Zenity not found" error  
+**Solution**: Install zenity: `sudo pacman -S zenity`
 
-### "Database lock" error
-The app automatically handles stale locks. If issues persist:
-```bash
-sudo rm /var/lib/pacman/db.lck
-```
+**Problem**: Password dialog doesn't appear  
+**Solution**: Ensure you're running in a graphical environment with DISPLAY set
 
-### "checkupdates not found"
-Install pacman-contrib:
-```bash
-sudo pacman -S pacman-contrib
-```
+**Problem**: Authentication fails repeatedly  
+**Solution**: Verify your password is correct and your user has sudo privileges
 
-### "yay not found"
-Install yay:
-```bash
-sudo pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-```
+### Update Failures
+**Problem**: "Database is locked" error  
+**Solution**: Close other package managers (pamac, octopi, etc.), or the app will auto-remove stale locks after 3 seconds
 
-### Application won't start
-Check if PySide6 is installed:
-```bash
-python -c "import PySide6; print('OK')"
-```
+**Problem**: AUR updates fail  
+**Solution**: Ensure `yay` is installed: `sudo pacman -S yay`
 
-If not, install it:
-```bash
-pip install PySide6
-```
+**Problem**: Process crashes during update  
+**Solution**: Check the log page for error details; ensure no conflicting processes
 
-### Password prompt not appearing
-Make sure zenity is installed and your `$DISPLAY` variable is set:
-```bash
-echo $DISPLAY  # Should output something like :0 or :1
-```
+### Display Issues
+**Problem**: Blurry text on high DPI displays  
+**Solution**: Enable "High DPI Scaling" in Settings → Advanced
+
+**Problem**: Theme not applying correctly  
+**Solution**: Click **Apply** in settings dialog; restart application if needed
+
+**Problem**: Window too small on startup  
+**Solution**: Resize window manually; size is saved automatically on close
+
+### Permission Issues
+**Problem**: "Authentication failed" errors  
+**Solution**: Verify your user is in the `wheel` group: `groups $USER`
+
+**Problem**: pkexec errors for cache cleaning  
+**Solution**: Ensure polkit is installed and configured
 
 ## Development
-
-### Running from Source
-```bash
-git clone https://github.com/yourusername/arch-update-gui.git
-cd arch-update-gui
-python -m venv venv
-source venv/bin/activate
-pip install PySide6
-python update_gui.py
-```
 
 ### Project Structure
 ```
@@ -320,17 +276,6 @@ If you encounter any issues or have questions:
 - Open an issue on [GitHub Issues](https://github.com/misiix9/arch-update-gui/issues)
 - Check existing issues for solutions
 - Provide detailed information (error messages, system info, logs)
-
-## Roadmap
-
-- [ ] Automatic update checking on startup
-- [ ] Scheduled update checks
-- [ ] System tray icon
-- [ ] Package search and info
-- [ ] Rollback functionality
-- [ ] Multiple theme presets
-- [ ] Package ignoring/holding
-- [ ] Update history viewer
 
 ## Author
 
